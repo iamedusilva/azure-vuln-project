@@ -33,15 +33,6 @@
 
 - [Licença e Uso]
 
-2. Clique em "SQL" no menu superior
-
-## 🎯 Visão Geral3. Copie todo o conteúdo do arquivo `database/create_database.sql`
-
-4. Cole no campo de texto e clique em "Executar"
-
-Este projeto é uma aplicação web educacional que simula vulnerabilidades comuns encontradas em sistemas web reais. Desenvolvido para o ensino de segurança cibernética, demonstra falhas de segurança de forma controlada e educativa.
-
-#### Opção B: Via Linha de Comando
 
 ### Principais Características:```bash
 
@@ -82,17 +73,12 @@ Este projeto é uma aplicação web educacional que simula vulnerabilidades comu
 - **Font Awesome 6.0** - Ícones## 🚀 Executando a Aplicação
 
 
-
 ### Infraestrutura1. Certifique-se de que o Apache e MySQL estão rodando no XAMPP
 
-- **Azure Cloud** - Hospedagem do banco de dados2. Acesse: `http://localhost/Azure-Web-App---Vuln/index.php`
-
+- **Azure Cloud** - Hospedagem do banco de dados. Acesse: `http://localhost/Azure-Web-App---Vuln/index.php`
 - **XAMPP** - Ambiente de desenvolvimento local3. A aplicação deve carregar e mostrar os comentários existentes
 
-
-
 ## 📁 Estrutura do Projeto## 🔐 Usuários de Teste
-
 
 
 ```Utilize estes usuários para testar as funcionalidades:
