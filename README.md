@@ -11,27 +11,27 @@
 
 - PHP 7.4+ 
 
-- [Visão Geral](#-visão-geral)- MySQL/MariaDB ativo
+- [Visão Geral]
 
-- [Tecnologias Utilizadas](#️-tecnologias-utilizadas)- Navegador web
+- [Tecnologias Utilizadas]
 
-- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Estrutura do Projeto]
 
-- [Páginas do Sistema](#-páginas-do-sistema)## 🗄️ Configuração do Banco de Dados
+- [Páginas do Sistema]
 
-- [Vulnerabilidades Educacionais](#-vulnerabilidades-educacionais)
+- [Vulnerabilidades Educacionais]
 
-- [Configuração e Instalação](#️-configuração-e-instalação)### 1. Executar o Script SQL
+- [Configuração e Instalação]
 
-- [Banco de Dados](#️-banco-de-dados)
+- [Banco de Dados]
 
-- [Design e UI/UX](#-design-e-uiux)Há duas formas de executar o script de criação do banco:
+- [Design e UI/UX]
 
-- [Funcionalidades](#-funcionalidades)
+- [Funcionalidades]
 
-- [Equipe de Desenvolvimento](#-equipe-de-desenvolvimento)#### Opção A: Via phpMyAdmin
+- [Equipe de Desenvolvimento]
 
-- [Licença e Uso](#-licençe-e-uso)1. Abra o phpMyAdmin: `http://localhost/phpmyadmin`
+- [Licença e Uso]
 
 2. Clique em "SQL" no menu superior
 
