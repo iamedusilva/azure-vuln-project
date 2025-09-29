@@ -1,0 +1,838 @@
+/**
+ * DASHBOARD CSS - FinSecure Web Application
+ * 
+ * Este arquivo contém todos os estilos para a página do dashboard.
+ * Inclui estilos para navegação, cards, modais, tabelas, responsividade e animações.
+ * 
+ * @author Equipe FinSecure
+ * @version 2.0
+ * @date 2025-09-29
+ * 
+ * ESTRUTURA:
+ * 1. Reset e Base Styles
+ * 2. Layout e Background
+ * 3. Navigation
+ * 4. Dashboard Components
+ * 5. Modal System
+ * 6. Tables e Forms
+ * 7. Responsive Design
+ */
+
+/* ================================
+   1. RESET E BASE STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Background animado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, #00bcd4 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, #1976d2 0%, transparent 50%);
+    opacity: 0.05;
+    animation: float 20s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ================================
+   2. NAVIGATION
+================================ */
+
+.navbar {
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00bcd4 0%, #1976d2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #cccccc;
+    position: relative;
+}
+
+.user-info .user-name {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.user-info .user-name:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #00bcd4;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 0.5rem;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    color: #cccccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 188, 212, 0.1);
+    color: #00bcd4;
+}
+
+.dropdown-item i {
+    width: 16px;
+    color: #00bcd4;
+}
+
+.user-info .logout-btn {
+    color: #ff6b6b;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.user-info .logout-btn:hover {
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* ================================
+   3. LAYOUT CONTAINERS
+================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.vulnerability-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 87, 34, 0.1) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    color: #ffc107;
+    text-align: center;
+}
+
+.access-denied {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* ================================
+   4. DASHBOARD COMPONENTS
+================================ */
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.card h3 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* User Data Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.user-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+}
+
+.user-table td:first-child {
+    font-weight: 600;
+    color: #667eea;
+    width: 30%;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.user-table td:last-child {
+    color: #cccccc;
+}
+
+.password-field {
+    font-family: 'Courier New', monospace;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+}
+
+/* Password Container and Toggle */
+.password-container {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.password-container .password-toggle {
+    min-width: 16px;
+    min-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: #667eea;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    border-radius: 50%;
+}
+
+.password-toggle:hover {
+    color: #00bcd4;
+    background: rgba(0, 188, 212, 0.1);
+}
+
+.user-table .password-toggle:hover {
+    color: #ff6b6b !important;
+    background: rgba(220, 53, 69, 0.2);
+    border-radius: 50%;
+    padding: 0.2rem;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.2);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00bcd4 0%, #1976d2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #cccccc;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Comments */
+.comment {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #00bcd4;
+}
+
+.comment strong {
+    color: #00bcd4;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.comment-text {
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+/* ================================
+   5. MODAL SYSTEM
+================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 95%;
+    width: 1300px;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+    color: #00bcd4;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.modal-content .password-toggle {
+    right: 0.8rem;
+    top: 0.8rem;
+}
+
+.modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-body {
+    max-height: calc(90vh - 120px);
+    overflow-y: auto;
+}
+
+/* ================================
+   6. TABLES E FORMS
+================================ */
+
+/* Modal Tables */
+.users-table table,
+.failed-logins-table table {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.users-table tbody tr:hover,
+.failed-logins-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.users-table th:hover {
+    background: rgba(0, 188, 212, 0.2) !important;
+    transition: background 0.3s ease;
+}
+
+.users-table th .fas {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.users-table th:hover .fas {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.failed-logins-table table {
+    font-size: 0.85rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #cccccc;
+    font-weight: 600;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #00bcd4;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group small {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00bcd4 0%, #1976d2 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #cccccc;
+    border: 1px solid rgba(0, 188, 212, 0.3);
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Messages */
+.success {
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #28a745;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   7. RESPONSIVE DESIGN
+================================ */
+
+/* Large screens */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        gap: 2rem;
+    }
+    
+    .stats {
+        gap: 1rem;
+    }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .container {
+        padding: 2rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .password-container {
+        min-width: 120px !important;
+        max-width: calc(100vw - 150px) !important;
+        word-break: break-all;
+    }
+    
+    .password-container .password-toggle {
+        right: 0.3rem !important;
+        font-size: 0.8rem !important;
+        min-width: 14px;
+        min-height: 14px;
+    }
+    
+    .users-table table,
+    .failed-logins-table table {
+        font-size: 0.75rem;
+    }
+    
+    .users-table th,
+    .users-table td,
+    .failed-logins-table th,
+    .failed-logins-table td {
+        padding: 0.4rem !important;
+        word-break: break-word;
+    }
+    
+    .modal-content {
+        width: 98%;
+        margin: 1rem auto;
+        max-height: 90vh;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .user-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .logo img {
+        width: 200px !important;
+        height: 47px !important;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 1rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 0.5rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .logo i {
+        font-size: 1.2rem;
+    }
+    
+    .password-container {
+        min-width: 100px !important;
+        max-width: calc(100vw - 100px) !important;
+        padding: 0.2rem 2rem 0.2rem 0.4rem !important;
+        font-size: 0.85rem;
+    }
+    
+    .password-container .password-toggle {
+        right: 0.2rem !important;
+        font-size: 0.75rem !important;
+        min-width: 12px;
+        min-height: 12px;
+    }
+    
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .card {
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .stat-card .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .user-info .user-name {
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .form-group input, .form-group select {
+        padding: 0.8rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.8rem 0;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .container {
+        padding: 0.3rem;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+    
+    .user-info {
+        gap: 0.3rem;
+    }
+    
+    .user-info .user-name {
+        font-size: 0.85rem;
+    }
+    
+    .logout-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .vulnerability-warning {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .card {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-card .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .access-denied {
+        padding: 1.5rem;
+    }
+    
+    .access-denied i {
+        font-size: 3rem !important;
+    }
+    
+    .access-denied h2 {
+        font-size: 1.3rem;
+    }
+}

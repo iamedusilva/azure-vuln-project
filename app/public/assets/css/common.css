@@ -1,0 +1,424 @@
+/**
+ * COMMON CSS - FinSecure Web Application
+ * 
+ * Este arquivo contém estilos comuns compartilhados entre todas as páginas.
+ * Inclui utilitários, componentes reutilizáveis e estilos base.
+ * 
+ * @author Equipe FinSecure
+ * @version 2.0
+ * @date 2025-09-29
+ * 
+ * ESTRUTURA:
+ * 1. Variáveis CSS (Custom Properties)
+ * 2. Utility Classes
+ * 3. Team Section
+ * 4. Common Components
+ * 5. Animations
+ */
+
+/* ================================
+   1. VARIÁVEIS CSS
+================================ */
+
+:root {
+    /* Cores principais */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #00bcd4 0%, #1976d2 100%);
+    --background-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    
+    /* Cores sólidas */
+    --primary-color: #667eea;
+    --secondary-color: #00bcd4;
+    --accent-color: #1976d2;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
+    
+    /* Estados */
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --error-color: #dc3545;
+    
+    /* Transparências */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --dark-glass: rgba(13, 13, 13, 0.95);
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.4);
+    
+    /* Transições */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Bordas */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+}
+
+/* ================================
+   2. UTILITY CLASSES
+================================ */
+
+/* Text utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.text-muted { color: var(--text-muted); }
+.text-white { color: var(--text-primary); }
+
+/* Spacing utilities */
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+/* Display utilities */
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+/* Flex utilities */
+.flex-center { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+.flex-between { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.flex-column { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+
+/* ================================
+   3. TEAM SECTION
+================================ */
+
+.team-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.team-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.team-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.team-member:hover::before {
+    opacity: 0.1;
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--secondary-gradient);
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+    border: 3px solid var(--glass-border);
+    transition: all var(--transition-normal);
+}
+
+.team-member:hover .team-avatar {
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+}
+
+.team-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.team-role {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.team-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ================================
+   4. COMMON COMPONENTS
+================================ */
+
+/* Glass effect components */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-color);
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 3px solid var(--glass-border);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-gradient);
+}
+
+/* ================================
+   5. ANIMATIONS
+================================ */
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slideInFromLeft {
+    from { 
+        opacity: 0; 
+        transform: translateX(-30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes slideInFromRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Animation utility classes */
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slideInLeft {
+    animation: slideInFromLeft 0.8s ease-out;
+}
+
+.animate-slideInRight {
+    animation: slideInFromRight 0.8s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Delay animations */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+
+/* ================================
+   6. RESPONSIVE UTILITIES
+================================ */
+
+/* Team section responsive */
+@media (max-width: 768px) {
+    .team-section {
+        padding: 2rem 1rem;
+        margin: 2rem 0;
+    }
+    
+    .team-title {
+        font-size: 2rem;
+    }
+    
+    .team-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .team-member {
+        padding: 1.5rem;
+    }
+    
+    .team-avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .team-name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .team-section {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .team-title {
+        font-size: 1.8rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .team-member {
+        padding: 1.2rem;
+    }
+    
+    .team-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+}
+
+/* Hide/show utilities for different screen sizes */
+@media (max-width: 768px) {
+    .d-md-none { display: none; }
+    .d-md-block { display: block; }
+}
+
+@media (max-width: 576px) {
+    .d-sm-none { display: none; }
+    .d-sm-block { display: block; }
+}

@@ -1,0 +1,502 @@
+/**
+ * AUTH CSS - FinSecure Web Application
+ * 
+ * Este arquivo contém os estilos para as páginas de autenticação (login e registro).
+ * Inclui estilos para formulários, animações, responsividade e componentes de login.
+ * 
+ * @author Equipe FinSecure
+ * @version 2.0
+ * @date 2025-09-29
+ * 
+ * ESTRUTURA:
+ * 1. Reset e Base Styles
+ * 2. Layout e Background
+ *         .login-container,
+    .register-container {
+        max-width: 420px;
+        padding: 2rem;
+    }in-container,
+    .register-container {
+        max-width: 480px;
+        padding: 2.5rem;
+    }ontainer e Cards
+ * 4. Forms e Inputs
+ * 5. Buttons e Links
+ * 6. Messages e Alerts
+ * 7. Test Credentials Section
+ * 8. Responsive Design
+ */
+
+/* ================================
+   1. RESET E BASE STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Background animado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, #667eea 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, #764ba2 0%, transparent 50%);
+    opacity: 0.1;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   2. CONTAINER E CARDS
+================================ */
+
+.login-container,
+.register-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    animation: slideUp 1s ease-out;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo i {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #00bcd4 0%, #1976d2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #1976d2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo p {
+    color: #cccccc;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* ================================
+   3. FORMS E INPUTS
+================================ */
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #cccccc;
+    font-weight: 600;
+}
+
+.form-group i {
+    position: absolute;
+    left: 1rem;
+    top: 3rem;
+    color: #667eea;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input#password {
+    padding: 1rem 3rem 1rem 1rem;
+}
+
+.password-field {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.password-field input {
+    width: 100%;
+    padding-right: 3rem !important;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #00bcd4;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #667eea;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.form-group .password-toggle {
+    top: 3rem;
+    transform: none;
+}
+
+.password-toggle:hover {
+    color: #00bcd4;
+}
+
+.form-group small {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.form-group small strong {
+    color: #667eea;
+}
+
+/* ================================
+   4. BUTTONS E LINKS
+================================ */
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #00bcd4 0%, #1976d2 100%);
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.links {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.links a {
+    color: #667eea;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.links a:hover {
+    color: #cccccc;
+}
+
+/* ================================
+   5. MESSAGES E ALERTS
+================================ */
+
+.error, .success {
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.error {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #dc3545;
+}
+
+.success {
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #28a745;
+}
+
+/* ================================
+   6. TEST CREDENTIALS SECTION
+================================ */
+
+.test-credentials {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.test-credentials h4 {
+    color: #00bcd4;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.test-credentials ul {
+    list-style: none;
+    padding: 0;
+}
+
+.test-credentials li {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+}
+
+.test-credentials strong {
+    color: #00bcd4;
+}
+
+.injection-examples {
+    background: rgba(255, 193, 7, 0.05);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.injection-examples h4 {
+    color: #ffc107;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.injection-examples ul {
+    list-style: none;
+    padding: 0;
+}
+
+.injection-examples li {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 193, 7, 0.05);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+}
+
+.injection-examples strong {
+    color: #ffc107;
+}
+
+/* ================================
+   7. RESPONSIVE DESIGN
+================================ */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .login-container {
+        max-width: 420px;
+        padding: 2.5rem;
+    }
+    
+    .logo img {
+        width: 250px !important;
+        height: 58px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container,
+    .register-container {
+        margin: 1rem;
+        padding: 2rem;
+        max-width: none;
+    }
+    
+    .logo img {
+        width: 200px !important;
+        height: 47px !important;
+    }
+    
+    .links a {
+        display: block;
+        margin: 0.5rem 0;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+    
+    .links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    body {
+        padding: 1rem 0;
+    }
+    
+    .login-container,
+    .register-container {
+        margin: 0.5rem;
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+    
+    .logo i {
+        font-size: 2rem;
+    }
+    
+    .form-group input {
+        padding: 0.9rem 0.9rem 0.9rem 2.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .form-group i {
+        left: 0.9rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .login-container,
+    .register-container {
+        margin: 0.25rem;
+        padding: 1.2rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+    
+    .form-group input {
+        padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    }
+    
+    .form-group i {
+        left: 0.8rem;
+        top: 2.8rem;
+    }
+    
+    .links a {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 360px) {
+    .login-container {
+        padding: 1rem;
+    }
+    
+    .logo {
+        margin-bottom: 1.5rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+}
