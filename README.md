@@ -3,9 +3,10 @@
 # Instruções de Instalação e Configuração
 
 
-> **⚠️ ATENÇÃO:** Este projeto demonstra vulnerabilidades comuns em aplicações web hospedadas no Azure e apresenta como implementar um Web Application Firewall (WAF) para mitigar ataques. O objetivo é educacional, fazendo parte de um projeto de Segurança da Informação, mostrando na prática como identificar, explorar e proteger aplicações contra ameaças.. **NÃO USE EM PRODUÇÃO!**## 📋 Pré-requisitos
+> **⚠️ ATENÇÃO:** Este projeto demonstra vulnerabilidades comuns em aplicações web hospedadas no Azure e apresenta como implementar um Web Application Firewall (WAF) para mitigar ataques. O objetivo é educacional, fazendo parte de um projeto de Segurança da Informação, mostrando na prática como identificar, explorar e proteger aplicações contra ameaças..
+> **NÃO USE EM PRODUÇÃO!**
 
-
+## 📋 Pré-requisitos
 
 ## 📋 Índice- XAMPP instalado e funcionando
 
