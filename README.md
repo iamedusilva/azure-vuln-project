@@ -95,6 +95,6 @@ Azure-Web-App---Vuln/
 
 ---
 
-**📧 Contato:** contato@finsecure-edu.com  
+**📧 Contato:**
 **📅 Última Atualização:** Dez/2024  
 > *"A melhor defesa é conhecer o ataque"*  
